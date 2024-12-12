@@ -1,12 +1,27 @@
 import scrapy
 
+from ..items import BookstoscrapeItem as Book
+#from scrapy.spiders import CrawlSpider
+from scrapy.spiders.crawl import CrawlSpider,Rule
+from scrapy.linkextractors import LinkExtractor
 
-class BooksMainSpider(scrapy.Spider):
+
+# rest of your code...
+
+
+
+class BooksMainSpider(CrawlSpider):
     name = "books_main"
     allowed_domains = ["books.toscrape.com"]
-    start_urls = ["https://books.toscrape.com/catalogue/a-light-in-the-attic_1000/index.html"]
+    start_urls = ["https://books.toscrape.com/"]
 
-    def parse(self, response):
+    rules = [
+        Rule(LinkExtractor(allow=(r"catalogue/"), deny=(r"category")),
+             follow=True, 
+             callback="parse_item")
+    ]
+
+    def parse_item(self, response) -> None:
         title = response.css("article.product_page div.row h1::text").get()
         price = response.css("p.price_color::text ").get()
         stock = response.css("p.instock.availability::text").getall()[1].strip()
@@ -20,8 +35,27 @@ class BooksMainSpider(scrapy.Spider):
         price_incl_tax = table_data[3]
         tax = table_data[4]
         availability = table_data[5]
-        number_reviews = table_data[6]    
-
-        print(title, price, stock, rating, description, upc, product_type, price_excl_tax, price_incl_tax, tax, availability, number_reviews)
+        number_reviews = table_data[6] 
+        img_url = response.css("img::attr(src)").get()
+        url=response.url
+        book = Book(
+            title = title,
+            price = price,
+            stock = stock,
+            rating = rating,
+            description = description,
+            upc = upc,
+            product_type = product_type,
+            price_excl_tax = price_excl_tax,
+            price_incl_tax = price_incl_tax,
+            tax = tax,
+            availability = availability,
+            number_reviews = number_reviews,
+            img_url = img_url,
+            url=url
+            
+        )   
+        yield book
+       # print(title, price, stock, rating, description, upc, product_type, price_excl_tax, price_incl_tax, tax, availability, number_reviews)
 
 
