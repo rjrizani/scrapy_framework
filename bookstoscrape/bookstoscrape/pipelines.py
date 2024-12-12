@@ -17,7 +17,7 @@ class BookstoscrapePipeline:
         item['rating'] = self.process_rating(item['rating'])
         item["stock"] = self.extract_number(item['stock'])
         item["number_reviews"] = int(item['number_reviews'])
-        item["image_url"] =  f"https://books.toscrape.com/{item['image_url'].removeprefix('../../')}"
+        item["img_url"] =  item["img_url"].replace('../../', 'https://books.toscrape.com/')
         return item
 
     def process_rating(self, value):

@@ -19,9 +19,8 @@ class BookstoscrapeItem(scrapy.Item):
     price_excl_tax = scrapy.Field()
     price_incl_tax = scrapy.Field()
     tax = scrapy.Field()
-    availability = scrapy.Field()
     number_reviews = scrapy.Field()
-    image_url = scrapy.Field()
-    url=scrapy.Field()
+    img_url = scrapy.Field()
+
 
     
