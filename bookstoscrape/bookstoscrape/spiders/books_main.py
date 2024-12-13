@@ -17,8 +17,18 @@ class BooksMainSpider(CrawlSpider):
     rules = [
         Rule(LinkExtractor(allow=(r"catalogue/"), deny=(r"category")),
              follow=True, 
-             callback="parse_item")
+             callback="parse_item"),
+       
     ]
+
+    def closed(self, reason):
+        if self.crawler.stats is not None and self.crawler.stats.get_value('item_scraped_count') == 50:
+            if self.crawler.engine is not None:
+                elf.crawler.engine.close_spider(self, reason='item_scraped_count_limit_reached')
+            else:
+                # Handle the case where self.crawler.engine is None
+                # For example, you could log an error or raise an exception
+                print("Error: self.crawler.engine is None")
 
     def parse_item(self, response):
         title = response.css("article.product_page div.row h1::text").get()
