@@ -64,6 +64,7 @@ ROBOTSTXT_OBEY = True
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
 ITEM_PIPELINES = {
     "bookstoscrape.pipelines.BookstoscrapePipeline": 300,
+    "bookstoscrape.pipelines.SqlAlchemyPipeline": 400,
 }
 
 # Enable and configure the AutoThrottle extension (disabled by default)
@@ -90,3 +91,5 @@ ITEM_PIPELINES = {
 # Set settings whose default value is deprecated to a future-proof value
 TWISTED_REACTOR = "twisted.internet.asyncioreactor.AsyncioSelectorReactor"
 FEED_EXPORT_ENCODING = "utf-8"
+
+

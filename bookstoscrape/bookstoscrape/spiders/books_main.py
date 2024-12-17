@@ -24,7 +24,7 @@ class BooksMainSpider(CrawlSpider):
     def closed(self, reason):
         if self.crawler.stats is not None and self.crawler.stats.get_value('item_scraped_count') == 50:
             if self.crawler.engine is not None:
-                elf.crawler.engine.close_spider(self, reason='item_scraped_count_limit_reached')
+                self.crawler.engine.close_spider(self, reason='item_scraped_count_limit_reached')
             else:
                 # Handle the case where self.crawler.engine is None
                 # For example, you could log an error or raise an exception
@@ -51,11 +51,11 @@ class BooksMainSpider(CrawlSpider):
             # For example, you could set the fields to some default values
             upc = ""
             product_type = ""
-            price_excl_tax = ""
-            price_incl_tax = ""
-            tax = ""
+            price_excl_tax = 0.0
+            price_incl_tax = 0.0
+            tax = 0.0
            
-            number_reviews = ""
+            number_reviews = 0
         img_url = response.css("img::attr(src)").get()
         
 
