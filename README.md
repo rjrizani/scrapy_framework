@@ -23,7 +23,7 @@ This project demonstrates how to use Scrapy to scrape book data from websites.
     venv\Scripts\activate.bat  # Activate on Windows
 3. Install project dependencies
    ```
-   pip freeze > requirements.txt
+   pip install -r requirements.txt
 
 ## Running the Scraper
    ```bash
