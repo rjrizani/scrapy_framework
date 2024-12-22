@@ -24,7 +24,7 @@ This project demonstrates how to use Scrapy to scrape book data from websites.
 
 ## Running the Scraper
    ```bash
-  cd bookstoscrape
+  cd scrapy_framework/bookstoscrape
   scrapy crawl books_main
 
 This will scrape book data and save it to a SQLite database by default.
