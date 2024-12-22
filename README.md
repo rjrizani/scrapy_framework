@@ -17,10 +17,7 @@ This project demonstrates how to use Scrapy to scrape book data from websites.
    git clone https://github.com/rjrizani/scrapy_framework.git
 
 2. (Optional) Create a virtual environment
-   ```bash
-    python -m venv venv  # Using venv
-    source venv/bin/activate  # Activate the virtual environment (Linux/macOS)
-    venv\Scripts\activate.bat  # Activate on Windows
+  
 3. Install project dependencies
    ```
    pip install -r requirements.txt
