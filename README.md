@@ -14,7 +14,7 @@ This project demonstrates how to use Scrapy to scrape book data from websites.
 1. Clone the repository:
 
    ```bash
-   git clone [https://github.com/your-username/bookstoscrape.git](https://github.com/your-username/bookstoscrape.git)
+   git clone https://github.com/rjrizani/scrapy_framework.git
 
 2. (Optional) Create a virtual environment
    ```bash
