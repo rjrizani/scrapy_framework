@@ -1,8 +1,8 @@
 
-.vscode/
+
 
 # Ignore .env file
-myenv/
+
 
 # Ignore .DS_Store files
 .DS_Store
