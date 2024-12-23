@@ -1,4 +1,4 @@
-# Book Scraper
+# Book Scraper: Extracting Data from [books.toscrape.com](https://books.toscrape.com/)
 
 This project demonstrates how to use Scrapy to scrape book data from websites.
 
